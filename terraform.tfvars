@@ -1,0 +1,6 @@
+project=""
+vm="vm1"
+network="vmnet"
+subnetwork="vmsubnet"
+firewall="vmfirewall"
+vmtemplate = "vmtem"
