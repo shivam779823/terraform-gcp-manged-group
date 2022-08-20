@@ -7,9 +7,9 @@ variable "project" {
   
 }
 
-variable "vm" {
-  type = string
-}
+# variable "vm" {
+#   type = string
+# }
 
 variable "network" {
   type = string

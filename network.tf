@@ -1,9 +1,10 @@
+#vpc
 resource "google_compute_network" "vmnet" {
     auto_create_subnetworks = false
     name = var.network
   
 }
-
+#subnet
 resource "google_compute_subnetwork" "vmsubnet" {
     name = var.subnetwork
     network = google_compute_network.vmnet.id
@@ -11,7 +12,13 @@ resource "google_compute_subnetwork" "vmsubnet" {
     ip_cidr_range = "10.2.0.0/16"
      
 }
+# reserved IP address
+resource "google_compute_global_address" "default" {
+  provider = google-beta
+  name = "lb-static-ip"
+}
 
+#firewall 
 resource "google_compute_firewall" "vmfirewall" {
    name = var.firewall
    network = google_compute_network.vmnet.name
@@ -23,4 +30,5 @@ resource "google_compute_firewall" "vmfirewall" {
    target_tags = [ "vm1" ]
    source_ranges = [ "10.2.0.0/16" ]
 }
+
 

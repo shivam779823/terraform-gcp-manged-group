@@ -1,5 +1,5 @@
 project=""
-vm="vm1"
+# vm="vm1"
 network="vmnet"
 subnetwork="vmsubnet"
 firewall="vmfirewall"
