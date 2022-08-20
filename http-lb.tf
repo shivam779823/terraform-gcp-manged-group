@@ -30,7 +30,8 @@ resource "google_compute_backend_service" "default" {
   name                     = "lb-backend-service"
   provider                 = google-beta
   protocol                 = "HTTP"
-  port_name                = "my-port"
+  port_name                = "http"
+
   load_balancing_scheme    = "EXTERNAL"
   timeout_sec              = 10
   enable_cdn               = false

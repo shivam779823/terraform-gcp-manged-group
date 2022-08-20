@@ -27,7 +27,7 @@ resource "google_compute_firewall" "vmfirewall" {
      protocol = "tcp"
      ports = ["8080","80"]
    }
-   target_tags = [ "vm1" ]
+   target_tags = [ "vm1","allow-health-check" ]
    source_ranges = [ "10.2.0.0/16" ]
 }
 
