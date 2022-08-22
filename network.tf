@@ -18,17 +18,31 @@ resource "google_compute_global_address" "default" {
   name = "lb-static-ip"
 }
 
-#firewall 
-resource "google_compute_firewall" "vmfirewall" {
+#firewall Health checks
+resource "google_compute_firewall" "allow-health_checks" {
    name = var.firewall
    network = google_compute_network.vmnet.name
-   description = "for vm-1 and vm-2"
+   description = "for health checks"
    direction     = "INGRESS"
    allow {
      protocol = "tcp"
      ports = ["8080","80"]
    }
-   target_tags = ["allow-health-check" ]
+   target_tags = ["http-server" ]
    source_ranges = [ "130.211.0.0/22", "35.191.0.0/16" ]
+}
+
+#allow http traffic
+resource "google_compute_firewall" "vmfirewall" {
+   name = "vmfirewall"
+   network = google_compute_network.vmnet.name
+  
+   direction     = "INGRESS"
+   allow {
+     protocol = "tcp"
+     ports = ["80","22"]
+   }
+   target_tags = ["http-server" ]
+   source_ranges = [ "0.0.0.0/0" ]
 }
 
