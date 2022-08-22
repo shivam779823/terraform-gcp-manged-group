@@ -31,7 +31,6 @@ resource "google_compute_backend_service" "default" {
   provider                 = google-beta
   protocol                 = "HTTP"
   port_name                = "http"
-
   load_balancing_scheme    = "EXTERNAL"
   timeout_sec              = 10
   enable_cdn               = false

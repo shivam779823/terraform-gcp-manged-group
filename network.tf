@@ -9,7 +9,7 @@ resource "google_compute_subnetwork" "vmsubnet" {
     name = var.subnetwork
     network = google_compute_network.vmnet.id
     private_ip_google_access = true 
-    ip_cidr_range = "10.2.0.0/16"
+    ip_cidr_range = "10.0.1.0/24"
      
 }
 # reserved IP address
@@ -23,12 +23,12 @@ resource "google_compute_firewall" "vmfirewall" {
    name = var.firewall
    network = google_compute_network.vmnet.name
    description = "for vm-1 and vm-2"
+   direction     = "INGRESS"
    allow {
      protocol = "tcp"
      ports = ["8080","80"]
    }
-   target_tags = [ "vm1","allow-health-check" ]
+   target_tags = ["allow-health-check" ]
    source_ranges = [ "130.211.0.0/22", "35.191.0.0/16" ]
 }
-
 

@@ -4,7 +4,7 @@ resource "google_compute_instance_template" "default" {
   name         = var.vmtemplate
   provider     = google-beta
   machine_type = "e2-small"
-  tags         = ["allow-health-check","vm1"]
+  tags         = ["allow-health-check"]
 
   network_interface {
     network    = google_compute_network.vmnet.id
