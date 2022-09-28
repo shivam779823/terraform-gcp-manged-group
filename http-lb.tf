@@ -20,7 +20,7 @@ resource "google_compute_target_http_proxy" "default" {
 # url map
 resource "google_compute_url_map" "default" {
   name            = "lb-url-map"
-  provider        = google-beta
+  provider        = google-betas
   default_service = google_compute_backend_service.default.id
 }
 
