@@ -2,7 +2,6 @@
 # instance template
 resource "google_compute_instance_template" "default" {
   name         = var.vmtemplate
-  provider     = google-beta
   machine_type = "e2-small"
   tags         = ["http-server"]
 
@@ -50,7 +49,6 @@ resource "google_compute_instance_template" "default" {
 # health check
 resource "google_compute_health_check" "default" {
   name     = "lb-hc"
-  provider = google-beta
   http_health_check {
     port_specification = "USE_SERVING_PORT"
   }
@@ -59,7 +57,6 @@ resource "google_compute_health_check" "default" {
 # MIG
 resource "google_compute_instance_group_manager" "default" {
   name     = "mig1"
-  provider = google-beta
   zone     = "us-central1-c"
   named_port {
     name = "http"

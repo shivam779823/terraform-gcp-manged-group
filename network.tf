@@ -14,7 +14,6 @@ resource "google_compute_subnetwork" "vmsubnet" {
 }
 # reserved IP address
 resource "google_compute_global_address" "default" {
-  provider = google-beta
   name = "lb-static-ip"
 }
 
