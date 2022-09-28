@@ -1,4 +1,4 @@
-#vpc
+#vpc custom
 resource "google_compute_network" "vmnet" {
     auto_create_subnetworks = false
     name = var.network
@@ -19,7 +19,7 @@ resource "google_compute_global_address" "default" {
 
 #firewall Health checks
 resource "google_compute_firewall" "allow-health_checks" {
-   name = var.firewall
+   name = var.firewall_health
    network = google_compute_network.vmnet.name
    description = "for health checks"
    direction     = "INGRESS"
@@ -33,7 +33,7 @@ resource "google_compute_firewall" "allow-health_checks" {
 
 #allow http traffic
 resource "google_compute_firewall" "vmfirewall" {
-   name = "vmfirewall"
+   name = var.firewall
    network = google_compute_network.vmnet.name
   
    direction     = "INGRESS"

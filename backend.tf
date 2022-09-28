@@ -3,7 +3,7 @@
 
 terraform {
  backend "gcs" {
-   bucket  = "sm-test-p"
+   bucket  = var.backend_bucket
    prefix  = "terraform/state"
  }
 }
